@@ -1,0 +1,23 @@
+{
+  "name": "wp-letscode",
+  "version": "0.0.1",
+  "description": "An CLI for setup local env with WordPress for you develop your themes with CD integration with gitlab",
+  "main": "index.js",
+  "preferGlobal": true,
+  "bin": "./index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mario Souto <@omariosouto>",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.15.1",
+    "convert-newline": "0.0.5",
+    "fs-extra": "^6.0.1",
+    "inquirer": "^6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
