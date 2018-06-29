@@ -61,10 +61,11 @@ const generateFolderStructure = async (projectName) => {
                                             .replace('%%PASSWORD%%', answers.PASSWORD)
                                             .replace('%%HOST%%', answers.HOST)
                                             .replace('%%PROD_FOLDER_PATH%%', answers.PROD_FOLDER_PATH)
-        console.log(gitlabCiYMLContent)
+
         await fs.outputFile(`./${projectName}/gitlab-ci.yml`, gitlabCiYMLContent, {
             encoding: 'utf8'
         })
+
         console.log(`[${global.name}] gitlab-ci.yml created with success`)
         console.log(`[${global.name}] Project setup finished, now you can access the dir created with "cd ${projectName}" and run the command ${global.name} run`)
     } catch (err) {
