@@ -38,7 +38,6 @@ variables:
 
 # ToDo: pt-br
 
-- [] rodar um `git init` depois de criar o projeto
 - [] Criar os containers com o nome do projeto
-- [] Criar comando `wp-letscode stop <nomedoprojeto>`
-- [] Incrementar número de portas para saber qual está disponível (só mandar um http.get e verificar se tem algum retorno na hora de criar o docker-compose.yml) 
+- [] Criar comando `wp-letscode stop nomedoprojeto`
+- [] Incrementar número de portas para saber qual está disponível (só mandar um http.get() e verificar se tem algum retorno na hora de criar o docker-compose.yml) 

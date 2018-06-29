@@ -1,6 +1,7 @@
 const fs = require('fs-extra')
 const { prompt } = require('inquirer')
-const convertNewline = require("convert-newline");
+const path = require('path')
+const { spawn } = require('child_process');
 const { gitignore, gitlabCiYML, dockerComposeYML } = require('../bases')
 const packageJsonInfo = require('../package.json')
 
@@ -55,7 +56,6 @@ const generateFolderStructure = async (projectName) => {
             }
         ]
         const answers = await prompt(questions)
-        console.log(answers)
         let gitlabCiYMLContent = gitlabCiYML
                                             .replace('%%USERNAME%%', answers.USERNAME)
                                             .replace('%%PASSWORD%%', answers.PASSWORD)
@@ -67,9 +67,32 @@ const generateFolderStructure = async (projectName) => {
         })
 
         console.log(`[${global.name}] gitlab-ci.yml created with success`)
-        console.log(`[${global.name}] Project setup finished, now you can access the dir created with "cd ${projectName}" and run the command ${global.name} run`)
     } catch (err) {
         console.log(`[${global.name}] ${err}`)
     }
+    // 4 - Initializing git
+    console.log(path.join(process.cwd(), projectName))
+    const runGitInit = spawn('git', ['init'], {
+        cwd: path.join(process.cwd(), projectName),
+    })
+    let runGitInitSuccess = ''
+    let runGitInitError  = ''
+
+    runGitInit.stdout.on('data', (data) => runGitInitSuccess += data);
+    runGitInit.stderr.on('data', (data) => runGitInitError += data);
+
+    runGitInit.on('error', (err) => {
+        console.log(err)
+    })
+    runGitInit.on('close', (code) => {
+        if(runGitInitSuccess.length) {
+            console.log('Project up and running :)')
+        }
+        if(runGitInitError.length) {
+            console.log('Some problem occurred :(')
+        }
+        console.log(`[${global.name}] Git repository initialized with success!`)
+        console.log(`[${global.name}] Project setup finished, now you can access the dir created with "cd ${projectName}" and run the command ${global.name} run`)
+    });
 }
 module.exports = generateFolderStructure
