@@ -20,6 +20,9 @@ It's a plugin with the purpose of make easy setup local env for develop WordPres
 
 3. With this setup, **you will be able to versionate a version of your database for local development** and share this with others developers of your team.
 
+## IMPORTANT
+> If you create one project, while the project it's beta, you may need to stop all containers created from docker. If you are new with Docker, just type these command in your terminal: `docker rm --force $(docker ps -a -q)`
+
 ## Installing Plugins
 
 1. Composer ...

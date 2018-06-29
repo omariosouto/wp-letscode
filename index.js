@@ -67,11 +67,19 @@ const recursiveFetch = (url) => {
         if(data.text) {
             return data
         } else {
-            return recursiveFetch(url)
+            return new Promise(function(resolve) {
+                setTimeout(() => {
+                    resolve(recursiveFetch(url))
+                }, 5000);
+            });
         }
     })
     .catch(error => {
-        return recursiveFetch(url)
+        return new Promise(function(resolve) {
+            setTimeout(() => {
+                resolve(recursiveFetch(url))
+            }, 5000);
+        });
         // console.log('First Error', error)
     });
 
