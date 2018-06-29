@@ -15,7 +15,8 @@
     "commander": "^2.15.1",
     "convert-newline": "0.0.5",
     "fs-extra": "^6.0.1",
-    "inquirer": "^6.0.0"
+    "inquirer": "^6.0.0",
+    "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"
