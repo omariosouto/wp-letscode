@@ -11,7 +11,9 @@ It's a plugin with the purpose of make easy setup local env for develop WordPres
 
 ## Get Started
 
-1. First, create a project with: `wp-letscode g my-new-site`
+0. First of all, install the plugin: `npm i -g wp-letscode`
+
+1. After install, create a project with: `wp-letscode g my-new-site`
 2. After create a project, access the folder created and run: `wp-letscode run`
 
 > At this moment, 3 docker containers will be created (one with **php and your site**, one with **mysql** and another with **phpmyadmin**) and you will be able to access: http://localhost:8080/
