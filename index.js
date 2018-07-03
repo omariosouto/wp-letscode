@@ -19,6 +19,18 @@ program
     .description('Generate a new structure of project')
     .action((projectName) => generateFolderStructure(projectName))
 
+// program
+//     .command('stop <projectName>')
+//     .alias('s')
+//     .description('Stop and kill containers of an specific project')
+//     .action((projectName) => stopProject(projectName))
+
+// program
+//     .command('list <projectName>')
+//     .alias('l')
+//     .description('List all running projects')
+//     .action((projectName) => listProjects(projectName))
+
 program
     .command('run')
     .alias('r')

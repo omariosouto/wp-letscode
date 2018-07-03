@@ -23,8 +23,32 @@ const generateFolderStructure = async (projectName) => {
     }
 
     // 2 - Creating docker-compose.yml
+    let number = 9080
+    const checkPage = () => {
+        return fetch(`http://localhost:${number}`)
+            .then((response) => {
+                number++
+                return checkPage()
+            })
+    }
     try {
-        await fs.outputFile(`./${projectName}/docker-compose.yml`, dockerComposeYML)
+        // 1 - checar qual porta ta disponível (pegar 2 portas sequenciais)
+        let ports = []
+        try {
+            const teste = await checkPage()
+        } catch(err) {
+            ports = [number, number + 1]
+            console.log(ports)
+        }
+        // 2 - modificar os valores
+        let dockerComposeYMLContent = dockerComposeYML
+                                            .replace(/%%PROJECT_NAME%%/gm, projectName)
+                                            .replace(/%%PROJECT_PORT%%/gm, ports[0])
+                                            .replace('%%PHPMYADMIN_PORT%%', ports[1])
+        console.log(dockerComposeYMLContent)
+        await fs.outputFile(`./${projectName}/docker-compose.yml`, dockerComposeYMLContent, {
+            encoding: 'utf8'
+        })
         console.log(`[${global.name}] docker-compose.yml created with success`)
     } catch (err) {
         console.log(`[${global.name}] ${err}`)

@@ -1,6 +1,6 @@
 {
   "name": "wp-letscode",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An CLI for setup local env with WordPress for you develop your themes with CD integration with gitlab",
   "main": "index.js",
   "preferGlobal": true,
