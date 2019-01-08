@@ -6,12 +6,13 @@
   "preferGlobal": true,
   "bin": "./index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "babel src --out-dir dist --copy-files --extensions '.ts' --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mario Souto <@omariosouto>",
   "license": "MIT",
   "dependencies": {
+    "@babel/preset-env": "^7.2.3",
     "commander": "^2.15.1",
     "convert-newline": "0.0.5",
     "fs-extra": "^6.0.1",
@@ -19,6 +20,12 @@
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.17.5"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-typescript": "^7.1.0",
+    "nodemon": "^1.17.5",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1"
   }
 }
